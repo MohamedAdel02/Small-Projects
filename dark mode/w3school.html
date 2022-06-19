@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./w3school css//all.min.css">
+    <style>
+        :root {
+            --main-color: white;
+            --second-color : black;
+            --th-color: #DDD
+        }
+        .dark-them {
+            --main-color: black;
+            --second-color :white;
+            --th-color: black;
+        }
+        body{
+            background-color: var(--main-color);
+        }
+       nav{
+        background-color: var(--th-color);
+        padding: 0 20px;
+        display: flex;
+        justify-content: space-between;
+       }
+       .logo{
+        width: 15%;
+        padding: 15px;
+        text-align: center;
+        color: var(--second-color);
+        font-size: 30px;
+        font-weight: bold;
+        font-family: Arial, Helvetica, sans-serif;
+
+       }
+       .links{
+         width: 70%;
+         position: relative;
+       }
+       .links .icon:hover span:nth-child(2){
+        width: 100%;
+       }
+       .icon{
+        width: 30px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        cursor: pointer;
+       }
+       .icon span{
+        display: block;
+        margin-bottom: 5px;
+        background-color: var(--second-color);
+       }
+      
+       .icon span:first-child{
+        width: 100%;
+        height: 3px;
+       }
+       .icon span:nth-child(2){
+        width: 60%;
+        height: 3px;
+       }
+       .icon span:last-child{
+        width: 100%;
+        height: 5px;
+       }
+       ul{
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        position: absolute;
+        right: 0;
+        top: 120%;
+        background-color: var(--th-color);
+        width: 200px;
+        display: none;
+       }
+       .open {
+        display: block;
+       }
+       ul li a{
+        display: block;
+        text-decoration: none;
+        padding: 15px;
+        transition: .5s;
+        color: var(--second-color);
+        font-size: 20px;
+        font-family: Arial, Helvetica, sans-serif;
+       }
+       ul li a:hover{
+        padding-left: 30px;
+       }
+      ul li:not(:last-child) a {
+         border-bottom: 1px solid var(--second-color);
+       }
+       .dark-box{
+        width: 20px;
+        padding: 10px;
+        border-radius: 20px;
+        background-color: var(--second-color);
+        position: absolute;
+        right: 7.5%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+       }
+       .dark-box .sp{
+        display: block;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background-color: var(--main-color);
+        position: absolute;
+        left: 20%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        cursor: pointer;
+       }
+       .dark-box .sp.op1{
+         display: none;
+       }
+       .dark-box .st{
+        display: block;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background-color: var(--main-color);
+        position: absolute;
+        right: -12%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        cursor: pointer;
+        display: none;
+       }
+       .dark-box .st.op2{
+        display: block;
+       }
+       .font{
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        right: 15%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        cursor: pointer;
+       }
+       .font img{
+        width: 100%;
+        height: 100%;
+       }
+
+    </style>
+    
+</head>
+<body>
+        <nav>
+            <div class="logo">Logo</div>
+            <div class="links">
+                <div class="icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul class="try">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+                <div class="dark-box">
+                      <span class="sp"></span>
+                      <span class="st"></span>
+                </div>
+                <div class="font">
+                    <img src="./w3school img/moon.png">
+                </div>
+            </div>
+        </nav>
+        <script>
+            let icon = document.querySelector(".icon");
+            let u = document.querySelector(".try")
+            icon.addEventListener("click", () => {
+                u.classList.toggle("open")
+            })
+            
+            let icon2 = document.querySelector(".dark-box .sp");
+            let icon3 = document.querySelector(".dark-box .st");
+           
+            icon2.addEventListener("click", () => {
+                icon2.classList.toggle("op1")
+                icon3.classList.toggle("op2")
+                document.body.classList.toggle("dark-them");
+            })
+            icon3.addEventListener("click", () => {
+                icon2.classList.toggle("op1")
+                icon3.classList.toggle("op2")
+                document.body.classList.toggle("dark-them");
+            })
+
+            let font = document.querySelector(".font img");
+            font.addEventListener("click" , () => {
+                document.body.classList.toggle("dark-them");
+                if (document.body.classList.contains("dark-them")){
+                     font.src = "./w3school img/sun.png";
+                }else{
+                    font.src = "./w3school img/moon.png"
+                }
+               
+            })
+
+            
+        </script>
+</body>
+</html>
